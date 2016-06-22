@@ -1,0 +1,18 @@
+html { 
+  background: url(/img/donald_trump.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo {
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 15rem;
+  height: 5rem;
+  background-size: 15rem auto;
+  top: 2rem;
+  left: 2rem;
+  background-image: url(/img/logo.png);
+}

@@ -37,5 +37,6 @@ RUN luarocks install lua-cjson
 RUN git clone https://github.com/deepmind/torch-hdf5 /root/torch-hdf5
 WORKDIR /root/torch-hdf5
 RUN luarocks make hdf5-0-0.rockspec
+RUN mkdir /opt/trumpgen
 
 WORKDIR /opt/trumpgen
