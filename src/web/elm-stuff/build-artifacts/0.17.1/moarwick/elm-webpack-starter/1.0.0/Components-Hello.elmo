@@ -1,0 +1,16 @@
+var _moarwick$elm_webpack_starter$Components_Hello$hello = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('h1')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html$text(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'Hello, Elm',
+					A2(_elm_lang$core$String$repeat, model, '!')))
+			]));
+};
