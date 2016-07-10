@@ -3,8 +3,8 @@ import Html.Attributes exposing (..)
 import Html.App as Html
 import Html.Events exposing ( onClick )
 import Http
-import Json.Decode as Decode
-
+import Json.Decode as Json
+import Task
 
 appUrl = "http://localhost:8888/api/v1/speeches/"
 
@@ -13,30 +13,38 @@ main : Program Never
 main =
   Html.program 
     { init = init "Click the button to generate a speech"
-    , model = model
     , view = view
     , update = update 
     , subscriptions = subscriptions 
     }
 
 
-getSpeech : String -> Cmd Msg
+getSpeech : Cmd Msg
 getSpeech =
-    Task.perform FetchFail FetchSucceed (Http.get appUrl)
+    Task.perform FetchFail FetchSucceed (Http.get decodeSpeech appUrl)
 
+
+decodeSpeech : Json.Decoder String
+decodeSpeech =
+    Json.at ["speech"] Json.string
+
+
+type Msg
+  = NewSpeech
+  | FetchSucceed String
+  | FetchFail Http.Error
 
 
 -- MODEL
 type alias Model =
     { speech : String
-    , getSpeech
     }
 
 
 init : String -> (Model, Cmd Msg)
 init speech  =
   ( Model speech
-  , getSpeech speech
+  , getSpeech 
   )
 
 
@@ -45,10 +53,10 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     NewSpeech ->
-      (model, getSpeeches)
+      (model, getSpeech)
 
-    FetchSucceed newUrl ->
-      (Model model, Cmd.none)
+    FetchSucceed speech ->
+      (Model model.speech, Cmd.none)
 
     FetchFail _ ->
       (model, Cmd.none)

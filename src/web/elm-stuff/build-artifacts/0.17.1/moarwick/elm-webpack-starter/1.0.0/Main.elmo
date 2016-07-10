@@ -9,17 +9,6 @@ var _moarwick$elm_webpack_starter$Main$styles = {
 			{ctor: '_Tuple2', _0: 'border', _1: '4px solid #337AB7'}
 		])
 };
-var _moarwick$elm_webpack_starter$Main$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		if (_p0.ctor === 'NoOp') {
-			return model;
-		} else {
-			return model + 1;
-		}
-	});
-var _moarwick$elm_webpack_starter$Main$model = 0;
-var _moarwick$elm_webpack_starter$Main$Increment = {ctor: 'Increment'};
 var _moarwick$elm_webpack_starter$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -51,66 +40,63 @@ var _moarwick$elm_webpack_starter$Main$view = function (model) {
 								_elm_lang$html$Html_Attributes$class('col-xs-12')
 							]),
 						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_elm_lang$html$Html$div,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Attributes$class('jumbotron')
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										A2(
-										_elm_lang$html$Html$img,
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html_Attributes$src('img/elm.jpg'),
-												_elm_lang$html$Html_Attributes$style(_moarwick$elm_webpack_starter$Main$styles.img)
-											]),
-										_elm_lang$core$Native_List.fromArray(
-											[])),
-										_moarwick$elm_webpack_starter$Components_Hello$hello(model),
-										A2(
-										_elm_lang$html$Html$p,
-										_elm_lang$core$Native_List.fromArray(
-											[]),
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html$text('Elm Webpack Starter')
-											])),
-										A2(
-										_elm_lang$html$Html$button,
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html_Attributes$class('btn btn-primary btn-lg'),
-												_elm_lang$html$Html_Events$onClick(_moarwick$elm_webpack_starter$Main$Increment)
-											]),
-										_elm_lang$core$Native_List.fromArray(
-											[
-												A2(
-												_elm_lang$html$Html$span,
-												_elm_lang$core$Native_List.fromArray(
-													[
-														_elm_lang$html$Html_Attributes$class('glyphicon glyphicon-star')
-													]),
-												_elm_lang$core$Native_List.fromArray(
-													[])),
-												A2(
-												_elm_lang$html$Html$span,
-												_elm_lang$core$Native_List.fromArray(
-													[]),
-												_elm_lang$core$Native_List.fromArray(
-													[
-														_elm_lang$html$Html$text('TEST!')
-													]))
-											]))
-									]))
-							]))
+							[]))
 					]))
 			]));
 };
-var _moarwick$elm_webpack_starter$Main$main = {
-	main: _elm_lang$html$Html_App$beginnerProgram(
-		{model: _moarwick$elm_webpack_starter$Main$model, view: _moarwick$elm_webpack_starter$Main$view, update: _moarwick$elm_webpack_starter$Main$update})
+var _moarwick$elm_webpack_starter$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
 };
-var _moarwick$elm_webpack_starter$Main$NoOp = {ctor: 'NoOp'};
+var _moarwick$elm_webpack_starter$Main$decodeSpeech = A2(
+	_elm_lang$core$Json_Decode$at,
+	_elm_lang$core$Native_List.fromArray(
+		['speech']),
+	_elm_lang$core$Json_Decode$string);
+var _moarwick$elm_webpack_starter$Main$appUrl = 'http://localhost:8888/api/v1/speeches/';
+var _moarwick$elm_webpack_starter$Main$Model = function (a) {
+	return {speech: a};
+};
+var _moarwick$elm_webpack_starter$Main$FetchFail = function (a) {
+	return {ctor: 'FetchFail', _0: a};
+};
+var _moarwick$elm_webpack_starter$Main$FetchSucceed = function (a) {
+	return {ctor: 'FetchSucceed', _0: a};
+};
+var _moarwick$elm_webpack_starter$Main$getSpeech = A3(
+	_elm_lang$core$Task$perform,
+	_moarwick$elm_webpack_starter$Main$FetchFail,
+	_moarwick$elm_webpack_starter$Main$FetchSucceed,
+	A2(_evancz$elm_http$Http$get, _moarwick$elm_webpack_starter$Main$decodeSpeech, _moarwick$elm_webpack_starter$Main$appUrl));
+var _moarwick$elm_webpack_starter$Main$init = function (speech) {
+	return {
+		ctor: '_Tuple2',
+		_0: _moarwick$elm_webpack_starter$Main$Model(speech),
+		_1: _moarwick$elm_webpack_starter$Main$getSpeech
+	};
+};
+var _moarwick$elm_webpack_starter$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'NewSpeech':
+				return {ctor: '_Tuple2', _0: model, _1: _moarwick$elm_webpack_starter$Main$getSpeech};
+			case 'FetchSucceed':
+				return {
+					ctor: '_Tuple2',
+					_0: _moarwick$elm_webpack_starter$Main$Model(model.speech),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _moarwick$elm_webpack_starter$Main$main = {
+	main: _elm_lang$html$Html_App$program(
+		{
+			init: _moarwick$elm_webpack_starter$Main$init('Click the button to generate a speech'),
+			view: _moarwick$elm_webpack_starter$Main$view,
+			update: _moarwick$elm_webpack_starter$Main$update,
+			subscriptions: _moarwick$elm_webpack_starter$Main$subscriptions
+		})
+};
+var _moarwick$elm_webpack_starter$Main$NewSpeech = {ctor: 'NewSpeech'};
