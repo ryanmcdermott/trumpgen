@@ -8,13 +8,15 @@ app.use('/', express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;
+var port = 8888;
 
 // Set up an Router for our API
 var api = express.Router();              
 
-api.get('/', function(req, res) {
-  res.json({ message: 'hooray! welcome to our api!' });   
+api.get('/speeches/', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.json({ speech: 'hooray! welcome to our api!' });   
 });
 
 // Register our routes and have them prefixed with /api

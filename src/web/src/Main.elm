@@ -6,7 +6,7 @@ import Http
 import Json.Decode as Json
 import Task
 
-appUrl = "http://localhost:8888/api/v1/speeches/"
+appUrl = "http://localhost:8888/api/speeches/"
 
 -- APP
 main : Program Never
@@ -56,7 +56,7 @@ update msg model =
       (model, getSpeech)
 
     FetchSucceed speech ->
-      (Model model.speech, Cmd.none)
+      (Model speech, Cmd.none)
 
     FetchFail _ ->
       (model, Cmd.none)
@@ -75,6 +75,8 @@ view model =
   div [ class "container", style [("margin-top", "30px"), ( "text-align", "center"), ( "background-color", "auto")] ][
     div [ class "row" ][
       div [ class "col-xs-12" ][
+        text model.speech
+        , button [ onClick NewSpeech] [ text "Generate Speech!" ]
       ]
     ]
   ]

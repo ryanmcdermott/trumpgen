@@ -6,6 +6,10 @@ html {
   background-size: cover;
 }
 
+body {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 .logo {
   position: absolute;
   background-repeat: no-repeat;
