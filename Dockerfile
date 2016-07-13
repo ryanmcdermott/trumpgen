@@ -69,5 +69,7 @@ RUN mkdir /opt/trumpgen
 WORKDIR /opt/trumpgen/web
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 8080
+EXPOSE 8888
+EXPOSE 80
 
