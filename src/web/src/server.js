@@ -3,20 +3,25 @@ var app = express();
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var path = require('path');
+var exec = require('child_process').exec;
 
 app.use('/', express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = 8888;
+var port = process.env.PORT || 8888;
 
 // Set up an Router for our API
 var api = express.Router();              
 
 api.get('/speeches/', function(req, res) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.json({ speech: 'hooray! welcome to our api!' });   
+  exec('cd ~/torch-rnn/ && th sample.lua -length 2000 -gpu -1 -temperature 0.5 -checkpoint /opt/trumpgen/training/checkpoint/checkpoint.t7',
+    function (error, stdout, stderr) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+      res.json({ speech: stdout });   
+  });
 });
 
 // Register our routes and have them prefixed with /api

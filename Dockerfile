@@ -68,6 +68,8 @@ RUN mkdir /opt/trumpgen
 
 WORKDIR /opt/trumpgen/web
 RUN npm install
+RUN sudo npm install -g elm
+RUN sudo apt-get install screen
 
 EXPOSE 8080
 EXPOSE 8888

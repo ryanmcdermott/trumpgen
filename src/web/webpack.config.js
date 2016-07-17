@@ -15,7 +15,7 @@ var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'd
 var commonConfig = {
 
   output: {
-    path:       path.resolve( __dirname, 'dist/' ),
+    path:       path.resolve( __dirname, 'src/dist/' ),
     filename: '[hash].js',
   },
 
@@ -115,6 +115,10 @@ if ( TARGET_ENV === 'production' ) {
         {
           from: 'src/img/',
           to:   'img/'
+        },
+        {
+          from: 'src/styles/',
+          to:   'styles/'
         },
         {
           from: 'src/favicon.ico'
