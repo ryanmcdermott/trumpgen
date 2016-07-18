@@ -74,9 +74,15 @@ view : Model -> Html Msg
 view model =
   div [ class "container", style [("margin-top", "30px"), ( "text-align", "center"), ( "background-color", "auto")] ][
     div [ class "row" ][
-      div [ class "col-xs-12" ][
-        text model.speech
-        , button [ onClick NewSpeech] [ text "Generate Speech!" ]
+      div [ class "col-xs-8" ][
+        div [ class "box effect5" ][
+          text model.speech
+        ]
+        , div [][
+          a [class "button button-circle button-flat-caution"] [
+           text "Generate Speech"
+          ]
+        ]
       ]
     ]
   ]

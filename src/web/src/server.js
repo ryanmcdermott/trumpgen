@@ -15,12 +15,17 @@ var port = process.env.PORT || 8888;
 var api = express.Router();              
 
 api.get('/speeches/', function(req, res) {
-  exec('cd ~/torch-rnn/ && th sample.lua -length 2000 -gpu -1 -temperature 0.5 -checkpoint /opt/trumpgen/training/checkpoint/checkpoint.t7',
+  exec('cd ~/torch-rnn/ && th sample.lua -length 1500 -gpu -1 -temperature 0.5 -checkpoint /opt/trumpgen/training/checkpoint/checkpoint.t7',
     function (error, stdout, stderr) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-      res.json({ speech: stdout });   
+      
+      if (stderr) {
+        res.status(500).send('Speech could not be generated');
+      }
+      else {
+        res.json({ speech: stdout });
+      }
   });
 });
 
