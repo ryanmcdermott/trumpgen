@@ -1,73 +1,35 @@
-var _moarwick$elm_webpack_starter$Main$styles = {
-	body: _elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'background-color', _1: 'auto !important'}
-		]),
-	img: _elm_lang$core$Native_List.fromArray(
-		[
-			{ctor: '_Tuple2', _0: 'width', _1: '33%'},
-			{ctor: '_Tuple2', _0: 'border', _1: '4px solid #337AB7'}
-		])
-};
 var _moarwick$elm_webpack_starter$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html_Attributes$class('container'),
-				_elm_lang$html$Html_Attributes$style(
-				_elm_lang$core$Native_List.fromArray(
-					[
-						{ctor: '_Tuple2', _0: 'margin-top', _1: '30px'},
-						{ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
-						{ctor: '_Tuple2', _0: 'background-color', _1: 'auto'}
-					]))
-			]),
+			[]),
 		_elm_lang$core$Native_List.fromArray(
 			[
 				A2(
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('row')
+						_elm_lang$html$Html_Attributes$class('box effect5')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
+						_elm_lang$html$Html$text(model.speech)
+					])),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
 						A2(
-						_elm_lang$html$Html$div,
+						_elm_lang$html$Html$a,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$class('col-xs-8')
+								_elm_lang$html$Html_Attributes$class('button button-circle button-flat-caution')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								A2(
-								_elm_lang$html$Html$div,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Attributes$class('box effect5')
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html$text(model.speech)
-									])),
-								A2(
-								_elm_lang$html$Html$div,
-								_elm_lang$core$Native_List.fromArray(
-									[]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										A2(
-										_elm_lang$html$Html$a,
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html_Attributes$class('button button-circle button-flat-caution')
-											]),
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html$text('Generate Speech')
-											]))
-									]))
+								_elm_lang$html$Html$text('Generate Speech')
 							]))
 					]))
 			]));

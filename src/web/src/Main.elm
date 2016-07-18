@@ -72,32 +72,14 @@ subscriptions model =
 -- VIEW
 view : Model -> Html Msg
 view model =
-  div [ class "container", style [("margin-top", "30px"), ( "text-align", "center"), ( "background-color", "auto")] ][
-    div [ class "row" ][
-      div [ class "col-xs-8" ][
-        div [ class "box effect5" ][
-          text model.speech
-        ]
-        , div [][
-          a [class "button button-circle button-flat-caution"] [
-           text "Generate Speech"
-          ]
+    div [][
+      div [ class "box effect5" ][
+        text model.speech
+      ]
+      , div [][
+        a [class "button button-circle button-flat-caution"] [
+         text "Generate Speech"
         ]
       ]
     ]
-  ]
 
-
--- CSS STYLES
-styles : { body: List ( String, String) , img : List ( String, String ) }
-styles =
-  {
-    body =
-    [
-        ( "background-color", "auto !important")
-    ],
-    img =
-      [ ( "width", "33%" )
-      , ( "border", "4px solid #337AB7")
-      ]
-  }

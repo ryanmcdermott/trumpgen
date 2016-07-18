@@ -4,10 +4,22 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100%;
+  width: 100%;
 }
 
 body {
   background-color: rgba(0, 0, 0, 0) !important;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  align-self: center;
+  width: 75%;
+  margin-top: 100px;
 }
 
 .logo {
