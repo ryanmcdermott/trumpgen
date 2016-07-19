@@ -76,8 +76,8 @@ view model =
       div [ class "box effect5" ][
         text model.speech
       ]
-      , div [][
-        a [class "button button-circle button-flat-caution"] [
+      , div [class "button-container"][
+        a [class "button button-circle button-caution-flat"] [
          text "Generate Speech"
         ]
       ]

@@ -33,6 +33,21 @@ body {
   background-image: url(/img/logo.png);
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  align-self: center; 
+  width: 120px !important;
+  height: 120px !important;
+  line-height: 20px !important;
+  padding-top: 38px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .box {
   font-family: 'Cutive Mono';
   font-size: 1.5em

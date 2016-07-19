@@ -121,6 +121,10 @@ if ( TARGET_ENV === 'production' ) {
           to:   'styles/'
         },
         {
+          from: 'src/lib/',
+          to:   'lib/'
+        },
+        {
           from: 'src/favicon.ico'
         },
       ]),
