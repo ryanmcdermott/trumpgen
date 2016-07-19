@@ -77,7 +77,7 @@ view model =
         text model.speech
       ]
       , div [class "button-container"][
-        a [class "button button-circle button-caution-flat"] [
+        a [onClick NewSpeech, class "button button-circle button-caution-flat"] [
          text "Generate Speech"
         ]
       ]
