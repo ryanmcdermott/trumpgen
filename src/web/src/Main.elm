@@ -77,8 +77,10 @@ subscriptions model =
 -- VIEWS
 speechView model =
   if model.fetching then
-    div [] [
-      text "FETCHING"
+    div [ class "box effect5" ] [
+      div [ class "loader" ] [
+        text "FETCHING"
+      ]
     ]
   else
     div [ class "box effect5" ] [
