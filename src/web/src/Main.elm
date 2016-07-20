@@ -38,12 +38,17 @@ type Msg
 -- MODEL
 type alias Model =
     { speech : String
+      , fetching : Bool
     }
 
 
+setFetching : String -> Bool -> Model 
+setFetching speech fetching = 
+    Model speech fetching
+
 init : String -> (Model, Cmd Msg)
 init speech  =
-  ( Model speech
+  ( Model speech True
   , getSpeech 
   )
 
@@ -53,13 +58,13 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     NewSpeech ->
-      (model, getSpeech)
+      (setFetching model.speech True, getSpeech)
 
     FetchSucceed speech ->
-      (Model speech, Cmd.none)
+      (setFetching speech False, Cmd.none)
 
     FetchFail _ ->
-      (model, Cmd.none)
+      (setFetching model.speech False, Cmd.none)
 
 
 
@@ -69,13 +74,22 @@ subscriptions model =
   Sub.none
 
 
--- VIEW
+-- VIEWS
+speechView model =
+  if model.fetching then
+    div [] [
+      text "FETCHING"
+    ]
+  else
+    div [ class "box effect5" ] [
+      text model.speech
+    ]
+
 view : Model -> Html Msg
 view model =
     div [][
-      div [ class "box effect5" ][
-        text model.speech
-      ]
+      
+      speechView model
       , div [class "button-container"][
         a [onClick NewSpeech, class "button button-circle button-caution-flat"] [
          text "Generate Speech"
