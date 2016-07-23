@@ -6,7 +6,7 @@ import Http
 import Json.Decode as Json
 import Task
 
-appUrl = "http://localhost:8888/api/speeches/"
+appUrl = "/api/speeches/"
 
 -- APP
 main : Program Never
