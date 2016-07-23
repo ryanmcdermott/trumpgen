@@ -3,6 +3,7 @@
 ## Installation:
 ```
 docker build -t ryanmcdermott/trumpgen .
+docker run -ti -v $PWD/src:/opt/trumpgen ryanmcdermott/trumpgen npm install
 docker run -ti -v $PWD/src:/opt/trumpgen ryanmcdermott/trumpgen elm package install -y
 docker run -ti -v $PWD/src:/opt/trumpgen ryanmcdermott/trumpgen npm run build
 ```

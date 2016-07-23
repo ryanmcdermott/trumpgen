@@ -67,8 +67,6 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 RUN mkdir /opt/trumpgen
 
 WORKDIR /opt/trumpgen/web
-RUN npm install
-RUN sudo npm install -g elm
 RUN sudo apt-get install screen
 
 EXPOSE 8080
