@@ -60,6 +60,7 @@ body {
   background:#FFF;
   margin:20px auto;
   padding: 1rem;
+  max-width: 90rem;
 }
 
 .effect5 {
