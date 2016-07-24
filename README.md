@@ -1,7 +1,8 @@
 # trumpgen
 
 ## What is it?
-`trumpgen` is an app written in Elm and using Node and Torch on the backend to generate speeches in the style of 2016 United States Presidential candidate Donald Trump. Using a [corpus of speeches](https://github.com/ryanmcdermott/trump-speeches), a character-level recurrent neural network (RNN) is trained and the "style" of Donald Trump's speeches are approximated. After training the neural network, we can randomly sample from it and produce entirely new speeches.
+`trumpgen` is an app written in Elm and using Node and Torch on the backend to generate speeches in the style of 2016 United States Presidential candidate Donald Trump. Using a [corpus of speeches](https://github.com/ryanmcdermott/trump-speeches) and [torch-rnn](https://github.com/jcjohnson/torch-rnn), a character-level recurrent neural network (RNN) is trained and the "style" of Donald Trump's speeches are approximated. After training the neural network, we can randomly sample from it and produce entirely new speeches.
+
 
 ## What else?
 As I am the most novice of beginners in this area, I've found very simple explanations, without a lot of math, to be highly helpful. [Check out Andrej Karpathy's amazing RNN lesson](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) if you would like to learn more.
@@ -29,5 +30,7 @@ Released under the [MIT License](http://www.opensource.org/licenses/MIT)
 
 ## Credits
 [Char-RNN](https://github.com/karpathy/char-rnn)
+
 [torch-rnn](https://github.com/jcjohnson/torch-rnn)
+
 [docker-torch-rnn](https://github.com/crisbal/docker-torch-rnn)
