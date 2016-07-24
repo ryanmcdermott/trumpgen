@@ -22,6 +22,10 @@ body {
   margin-top: 100px;
 }
 
+.github-fork-ribbon:after {
+  border-style: none !important;
+}
+
 .logo {
   position: absolute;
   background-repeat: no-repeat;
@@ -92,6 +96,7 @@ body {
   right: 10px;
   left: auto;
 }
+
 .loader {
   font-size: 10px;
   margin: 50px auto;
